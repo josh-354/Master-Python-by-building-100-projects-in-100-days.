@@ -1,0 +1,35 @@
+import random
+
+word = ["gyat","skibidi",rizz]
+rand_word = random.choice(word)
+
+
+placeholder = ["_"] * len(rand_word)
+
+
+lives = 6
+
+print("Welcome to Hangman!")
+print(" ".join(placeholder))
+
+
+while "_" in placeholder and lives > 0:
+    guess = input("\nGuess a letter: ").lower()
+
+    if guess in rand_word:
+       
+        for i in range(len(rand_word)):
+            if rand_word[i] == guess:
+                placeholder[i] = guess
+        print("Correct!")
+    else:
+        lives -= 1
+        print(f"Wrong! You have {lives} lives left.")
+
+    print(" ".join(placeholder))
+
+
+if "_" not in placeholder:
+    print("\n Congratulations! You guessed the word!")
+else:
+    print("\n You ran out of lives! The word was:", rand_word)
